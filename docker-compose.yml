@@ -1,0 +1,17 @@
+version: '3.8'
+
+services:
+  db:
+    container_name: db-mysql
+    restart: always
+    image: mysql:8.0.0
+    environment: # environment variables for the Postgres container
+      MYSQL_USER: root
+      MYSQL_PASSWORD: root
+    ports: # port exposed to the host machine
+      - "3306:3306"
+    volumes: # volume used to persist data
+      - my-db:/var/lib/mysql
+
+volumes: # volume creation
+  my-db: {}
